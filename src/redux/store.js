@@ -6,10 +6,10 @@ import { devToolsEnhancer } from '@redux-devtools/extension';
 //   filter: '',
 // };
 const initialState = {
-    account: {
-      balance: 300,
-    },
-  };
+  account: {
+    balance: 300,
+  },
+};
 
 export const deposit = value => {
   return {
@@ -25,25 +25,22 @@ export const withdraw = value => {
 };
 
 const rootReducer = (state = initialState, action) => {
-    switch(action.type){
-
-        case 'account/deposit':
-            return {
-                account:{
-                    balance: state.account.balance + action.payload,
-                }
-            };
-        case 'account/withdraw':
-            return {
-                account:{
-                    balance: state.account.balance - action.payload
-                }
-            };
-        default:
-            return state;
-
-    }
-
+  switch (action.type) {
+    case 'account/deposit':
+      return {
+        account: {
+          balance: state.account.balance + action.payload,
+        },
+      };
+    case 'account/withdraw':
+      return {
+        account: {
+          balance: state.account.balance - action.payload,
+        },
+      };
+    default:
+      return state;
+  }
 };
 
 const enhancer = devToolsEnhancer();
