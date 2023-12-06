@@ -12,7 +12,9 @@ import GlobalStyles from './GlobalStyles';
 //   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 // ]
 const App = () => {
-  const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('contacts')) ?? []);
+  const [contacts, setContacts] = useState(
+    JSON.parse(localStorage.getItem('contacts')) ?? []
+  );
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -49,13 +51,12 @@ const App = () => {
     );
   };
 
-
   const filterByName = contacts?.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
-      <div
+    <div
       style={{
         textAlign: 'start',
         padding: '50px',
@@ -70,8 +71,8 @@ const App = () => {
         contactsFilter={filterByName}
         onDelete={handleDeleteContact}
       />
-      <Account/>
-      <GlobalStyles/>
+      <Account />
+      <GlobalStyles />
     </div>
   );
 };
