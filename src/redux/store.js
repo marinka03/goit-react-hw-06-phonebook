@@ -1,40 +1,29 @@
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 import { devToolsEnhancer } from '@redux-devtools/extension';
 
 // const initialState = {
 //   contacts: [],
 //   filter: '',
 // };
-const initialState = {
-  account: {
-    balance: 300,
-  },
+const accountInitialState = {
+  balance: 300,
 };
-
-export const deposit = value => {
-  return {
-    type: 'account/deposit',
-    payload: value,
-  };
+const localeInitialState = {
+  lang: 'uk',
 };
-export const withdraw = value => {
-  return {
-    type: 'account/withdraw',
-    payload: value,
-  };
-};
-
-const rootReducer = (state = initialState, action) => {
+const accountReducer = (state = accountInitialState, action) => {
   switch (action.type) {
     case 'account/deposit':
       return {
         account: {
+          ...state.account,
           balance: state.account.balance + action.payload,
         },
       };
     case 'account/withdraw':
       return {
         account: {
+          ...state.account,
           balance: state.account.balance - action.payload,
         },
       };
@@ -42,6 +31,46 @@ const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
+const localeReducer = (state = localeInitialState, action) => {
+  switch (action.type) {
+    case 'locale/changeLang':
+      return {
+        locale: {
+          ...state.locale,
+          lang: action.payload,
+        },
+      };
+    default:
+      return state;
+  }
+};
+
+
+export const deposit = value => {
+  return {
+    type: 'account/deposit',
+    payload: value,
+  };
+};
+
+export const withdraw = value => {
+  return {
+    type: 'account/withdraw',
+    payload: value,
+  };
+};
+
+export const changeLang = value => {
+  return {
+    type: 'locale/changeLang',
+    payload: value,
+  };
+};
+
+const rootReducer = combineReducers({
+  account: accountReducer,
+  locale: localeReducer,
+});
 
 const enhancer = devToolsEnhancer();
 export const store = createStore(rootReducer, enhancer);

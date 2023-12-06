@@ -5,6 +5,7 @@ import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
 import GlobalStyles from './GlobalStyles';
+import Lang from './Lang/Lang';
 // const CONTACTS = [
 //   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
 //   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -71,6 +72,7 @@ const App = () => {
         contactsFilter={filterByName}
         onDelete={handleDeleteContact}
       />
+      <Lang/>
       <Account />
       <GlobalStyles />
     </div>
