@@ -1,10 +1,37 @@
 import style from '../ContactForm/ContactForm.module.css';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { addContact } from '../../redux/contactsSlice';
 
-function ContactForm({ addContact }) {
+function ContactForm() {
+  const contacts = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
+
+  const hendleSubmit = e => {
+    e.preventDefault();
+    const { name, number } = e.target;
+    const contactData = {
+      name: name.value,
+      number: number.value,
+    };
+
+    const newContact = { id: nanoid(), ...contactData };
+    const checkNewContact = contactNumber => {
+      if (contacts.length >= 0) {
+        return contacts.some(contact => contact.number === contactNumber);
+      }
+      return;
+    };
+
+    checkNewContact(newContact.number)
+      ? alert(`${newContact.name} is already in contact`)
+      : dispatch(addContact(newContact));
+    e.target.reset();
+  };
+  localStorage.setItem('contacts', JSON.stringify(contacts));
   return (
-    <form className={style.contact__form} onSubmit={addContact}>
-      <label className={style.name__label}> 
+    <form className={style.contact__form} onSubmit={hendleSubmit}>
+      <label className={style.name__label}>
         Name
         <input
           className={style.input}
@@ -33,9 +60,5 @@ function ContactForm({ addContact }) {
     </form>
   );
 }
-
-ContactForm.propTypes = {
-  addContact: PropTypes.func.isRequired,
-};
 
 export default ContactForm;
