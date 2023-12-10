@@ -1,6 +1,5 @@
 import style from '../ContactForm/ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
 import { addContact } from '../../redux/contactsSlice';
 
 function ContactForm() {
@@ -15,7 +14,6 @@ function ContactForm() {
       number: number.value,
     };
 
-    const newContact = { id: nanoid(), ...contactData };
     const checkNewContact = contactNumber => {
       if (contacts.length >= 0) {
         return contacts.some(contact => contact.number === contactNumber);
@@ -23,12 +21,12 @@ function ContactForm() {
       return;
     };
 
-    checkNewContact(newContact.number)
-      ? alert(`${newContact.name} is already in contact`)
-      : dispatch(addContact(newContact));
+    checkNewContact(contactData.number)
+      ? alert(`${contactData.name} is already in contact`)
+      : dispatch(addContact(contactData));
     e.target.reset();
   };
-  localStorage.setItem('contacts', JSON.stringify(contacts));
+
   return (
     <form className={style.contact__form} onSubmit={hendleSubmit}>
       <label className={style.name__label}>

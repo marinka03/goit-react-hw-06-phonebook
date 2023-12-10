@@ -5,16 +5,16 @@ import style from '../ContactList/ContactList.module.css';
 
 function ContactList() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state=> state.contacts);
+  const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
-  console.log(contacts)
-  const contactsFilter = contacts.filter((contact={}) =>
+  console.log(contacts);
+  const contactsFilter = contacts.filter((contact = {}) =>
     contact.name?.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
     <div>
-      <ul> 
+      <ul>
         {contactsFilter.length === 0 && <p>There are no contacts found!</p>}
         {contactsFilter.length > 0 &&
           contactsFilter.map(({ id, name, number }) => (
@@ -23,7 +23,7 @@ function ContactList() {
               {number}
               <button
                 className={style.delete__btn}
-                type='reset'
+                type="reset"
                 onClick={() => dispatch(deleteContact(id))}
               >
                 Delete

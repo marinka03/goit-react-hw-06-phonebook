@@ -8,6 +8,7 @@
 .findContact__input {
   width: auto;
   height: 25px;
+  margin-bottom: 30px;
 }
 .findContact__input:focus {
   outline: none;

@@ -1,9 +1,14 @@
-import { createAction, createReducer } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = '';
-export const filterContact = createAction('filter/filterContact');
-
-export const filterReducer = createReducer(initialState, builder => {
-  builder.addCase(filterContact, (_, action) => action.payload);
+const filterSlice = createSlice({
+  name: 'filter',
+  initialState: '',
+  reducers: {
+    filterContact(_, action) {
+      return action.payload;
+    },
+  },
 });
 
+export const filterReducer = filterSlice.reducer;
+export const { filterContact } = filterSlice.actions;

@@ -10,8 +10,8 @@ const App = () => {
         padding: '50px',
       }}
     >
-      <Phonebook/>
-      <Contacts/>
+      <Phonebook />
+      <Contacts />
       <GlobalStyles />
     </div>
   );

@@ -5,7 +5,7 @@ import React from 'react';
 function Contacts() {
   return (
     <>
-      <h2>Contacts</h2>
+      <h2>Contacts:</h2>
       <Filter />
       <ContactList />
     </>
