@@ -1,19 +1,20 @@
-import Contacts from './Contacts/Contacts';
+import ContactsPage from 'pages/ContactPage';
+import HomePage from 'pages/HomePage/HomePage';
+import { Route, Routes } from 'react-router-dom';
+import AppLayout from './AppLayout/AppLayout';
 import GlobalStyles from './GlobalStyles';
-import Phonebook from './Phonebook/Phonebook';
 
 const App = () => {
   return (
-    <div
-      style={{
-        textAlign: 'start',
-        padding: '50px',
-      }}
-    >
-      <Phonebook />
-      <Contacts />
+    <>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+        </Route>
+      </Routes>
       <GlobalStyles />
-    </div>
+    </>
   );
 };
 

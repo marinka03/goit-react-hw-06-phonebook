@@ -9,12 +9,12 @@ function Filter() {
   return (
     <>
       <label className={style.findContact__label} value={filter}>
-        Find contact by name
         <input
           className={style.findContact__input}
           onChange={e => dispatch(filterContact(e.target.value))}
           type="text"
           name="find"
+          placeholder="Find contact by name..."
         />
       </label>
     </>

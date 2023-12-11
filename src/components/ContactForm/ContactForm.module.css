@@ -5,7 +5,7 @@
   width: 450px;
   height: 100%;
   padding: 15px;
-  background-color: #EEDEFF;
+  background-color: #eedeff;
   border: 1px solid gray;
   border-radius: 36px;
 }
@@ -32,12 +32,12 @@
   height: 30px;
   font-size: 16px;
 
-  background-color: #E1FCBB;
+  background-color: #e1fcbb;
   border: 2px solid darkseagreen;
   border-radius: 8px;
   cursor: pointer;
 }
 .add__contact__btn:hover,
 .add__contact__btn:focus {
-  background-color: #BFF0CC;
+  background-color: #bff0cc;
 }

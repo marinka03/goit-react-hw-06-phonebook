@@ -8,12 +8,12 @@
   font-size: 16px;
   margin-left: 15px;
 
-  background-color: #EDFFDE;
+  background-color: #edffde;
   border: 2px solid darkseagreen;
   border-radius: 4px;
   cursor: pointer;
 }
 .delete__btn:hover,
 .delete__btn:focus {
-  background-color: #C8EBAE;
+  background-color: #c8ebae;
 }

@@ -14,14 +14,16 @@ function ContactForm() {
       number: number.value,
     };
 
-    const checkNewContact = contactNumber => {
+    const checkNewContact = contactName => {
       if (contacts.length >= 0) {
-        return contacts.some(contact => contact.number === contactNumber);
+        return contacts.some(
+          contact => contact.name.toLowerCase() === contactName.toLowerCase()
+        );
       }
       return;
     };
 
-    checkNewContact(contactData.number)
+    checkNewContact(contactData.name)
       ? alert(`${contactData.name} is already in contact`)
       : dispatch(addContact(contactData));
     e.target.reset();
@@ -35,7 +37,7 @@ function ContactForm() {
           className={style.input}
           type="text"
           name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
@@ -47,7 +49,7 @@ function ContactForm() {
           className={style.input}
           type="tel"
           name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
