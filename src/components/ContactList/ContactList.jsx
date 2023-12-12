@@ -7,7 +7,6 @@ function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
-  console.log(contacts);
   const contactsFilter = contacts.filter((contact = {}) =>
     contact.name?.toLowerCase().includes(filter.toLowerCase())
   );
